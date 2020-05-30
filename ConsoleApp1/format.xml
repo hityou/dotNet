@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Formats>
-    <ACHP>
-    <Head/>
-    <Body/>
-    <Foot/>
-    </ACHP>
+    <Daily>
+        
+            <Col><length>8</length> <xml>Name</xml></Col>
+            <Col><length>8</length> <xml>Amount</xml></Col>
+            <Col><length>8</length> <xml>Place</xml></Col>
+        
+    </Daily>
 </Formats>

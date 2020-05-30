@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Data>
     <Row>
-        <Id/>
-        <Name/>
-        <Text/>
+        <Date>20190629</Date>
+        <Name>可口cola</Name>
+        <Amount>1</Amount>
+        <Place>家樂福</Place>
+    </Row>
+    <Row>
+        <Date>20190629</Date>
+        <Name>FIN黑松</Name>
+        <Amount>ten</Amount>
+        <Place>careffour</Place>
     </Row>
 </Data>
