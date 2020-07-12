@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Net.Http;
+using System.Data.SqlClient;
 namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            GetPlayers();
+            //GetPlayers();
 
             string formatXml = "format.xml";
             string dataXml = "data.xml";
@@ -55,7 +56,16 @@ namespace ConsoleApp1
                     Console.WriteLine(line);
                 }
             }
-            
+            string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
+            SqlConnection conn = new SqlConnection(connStr);
+conn.Open();
+string qStr = "select * from paylog";
+SqlCommand cmd = new SqlCommand(qStr, conn);
+SqlDataReader reader = cmd.ExecuteReader();
+while(reader.Read())
+Console.WriteLine(reader[1].ToString());
+reader.Close();
+conn.Close();
         }
 
         static void GetPlayers()
