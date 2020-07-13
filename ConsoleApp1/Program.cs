@@ -7,6 +7,11 @@ using System.Net.Http;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using Microsoft.Data.Sqlite;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Net.Http;
+using System.Data.SqlClient;
 namespace ConsoleApp1
 {
     class Program
@@ -107,6 +112,43 @@ string connStr = "Data Source=(local)\\SQLEXPRESS;AttachDbFilename=D:\\dev\\.Net
             Console.WriteLine("sqlite "+sqliteReader[0].ToString());
             reader.Close();
             sqliteconn.Close();
+            using (StreamWriter sw = new StreamWriter(dataTxt))
+            {
+                foreach (string line in lines)
+                {
+                    sw.WriteLine(line);
+                    Console.WriteLine(line);
+                }
+            }
+            //string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
+            //SqlConnection conn = new SqlConnection(connStr);
+conn.Open();
+string qStr = "select * from paylog";
+SqlCommand cmd = new SqlCommand(qStr, conn);
+//SqlDataReader reader = cmd.ExecuteReader();
+while(reader.Read())
+Console.WriteLine(reader[1].ToString());
+reader.Close();
+conn.Close();
+        }
+
+        static void GetPlayers()
+        {
+            var url = "https://localhost:5001/Logs/GetPlayer";
+            using (HttpClient hc = new HttpClient())
+            {
+                try
+                {
+                    hc.Timeout = TimeSpan.FromSeconds(30);
+                    HttpResponseMessage hrm = hc.GetAsync(url).Result;
+                    string body = hrm.Content.ReadAsStringAsync().Result;
+Console.WriteLine(body);
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("exception "+e.Message);
+                }
+            }
         }
     }
 }
