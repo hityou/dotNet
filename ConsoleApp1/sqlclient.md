@@ -1,0 +1,1 @@
+https://www.nuget.org/packages/Microsoft.Data.SqlClient/Data Source=.\SQLEXPRESS;AttachDbFilename=D:\dev\.Net\ConsoleApp1\mssql.mdf;Integrated Security=True;Connect Timeout=30

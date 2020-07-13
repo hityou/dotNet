@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Net.Http;
 using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 namespace ConsoleApp1
 {
     class Program
@@ -85,6 +87,26 @@ Console.WriteLine(body);
                     Console.WriteLine("exception "+e.Message);
                 }
             }
+            Console.WriteLine("Hello World!");
+string connStr = "Data Source=(local)\\SQLEXPRESS;AttachDbFilename=D:\\dev\\.Net\\ConsoleApp1\\mssql.mdf;Integrated Security=True;";
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+            string queryStr = "Select * from pay";
+            SqlCommand sqlcmd = new SqlCommand(queryStr, conn);
+            SqlDataReader reader = sqlcmd.ExecuteReader();
+            while (reader.Read())
+            Console.WriteLine(reader[0].ToString());
+            sqlcmd.Clone();
+            conn.Close();
+
+            SqliteConnection sqliteconn = new SqliteConnection("Data Source=sqlite.db");
+            sqliteconn.Open();
+            SqliteCommand sqliteCmd = new SqliteCommand(queryStr, sqliteconn);
+            SqliteDataReader sqliteReader = sqliteCmd.ExecuteReader();
+            while (sqliteReader.Read())
+            Console.WriteLine("sqlite "+sqliteReader[0].ToString());
+            reader.Close();
+            sqliteconn.Close();
         }
     }
 }
