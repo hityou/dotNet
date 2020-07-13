@@ -4,21 +4,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Net.Http;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using Microsoft.Data.Sqlite;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Net.Http;
-using System.Data.SqlClient;
 namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //GetPlayers();
+            GetPlayers();
 
             string formatXml = "format.xml";
             string dataXml = "data.xml";
@@ -63,7 +58,7 @@ namespace ConsoleApp1
                     Console.WriteLine(line);
                 }
             }
-            string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
+            /*string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
             SqlConnection conn = new SqlConnection(connStr);
 conn.Open();
 string qStr = "select * from paylog";
@@ -72,12 +67,12 @@ SqlDataReader reader = cmd.ExecuteReader();
 while(reader.Read())
 Console.WriteLine(reader[1].ToString());
 reader.Close();
-conn.Close();
+conn.Close();*/
         }
 
         static void GetPlayers()
         {
-            var url = "https://localhost:5001/Logs/GetPlayer";
+            /*var url = "https://localhost:5001/Logs/GetPlayer";
             using (HttpClient hc = new HttpClient())
             {
                 try
@@ -91,37 +86,30 @@ Console.WriteLine(body);
                 {
                     Console.WriteLine("exception "+e.Message);
                 }
-            }
+            }*/
             Console.WriteLine("Hello World!");
-string connStr = "Data Source=(local)\\SQLEXPRESS;AttachDbFilename=D:\\dev\\.Net\\ConsoleApp1\\mssql.mdf;Integrated Security=True;";
+            string queryStr = "Select * from pay";
+/*string connStr = "Data Source=(local)\\SQLEXPRESS;AttachDbFilename=D:\\dev\\.Net\\ConsoleApp1\\mssql.mdf;Integrated Security=True;";
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            string queryStr = "Select * from pay";
+            
             SqlCommand sqlcmd = new SqlCommand(queryStr, conn);
             SqlDataReader reader = sqlcmd.ExecuteReader();
             while (reader.Read())
             Console.WriteLine(reader[0].ToString());
             sqlcmd.Clone();
-            conn.Close();
+            conn.Close();*/
 
             SqliteConnection sqliteconn = new SqliteConnection("Data Source=sqlite.db");
             sqliteconn.Open();
             SqliteCommand sqliteCmd = new SqliteCommand(queryStr, sqliteconn);
             SqliteDataReader sqliteReader = sqliteCmd.ExecuteReader();
             while (sqliteReader.Read())
-            Console.WriteLine("sqlite "+sqliteReader[0].ToString());
-            reader.Close();
+            Console.WriteLine("sqlite "+sqliteReader[0].ToString()+sqliteReader[1].ToString());
+            sqliteReader.Close();
             sqliteconn.Close();
-            using (StreamWriter sw = new StreamWriter(dataTxt))
-            {
-                foreach (string line in lines)
-                {
-                    sw.WriteLine(line);
-                    Console.WriteLine(line);
-                }
-            }
-            //string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
-            //SqlConnection conn = new SqlConnection(connStr);
+            /*string connStr = "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true; AttachDbFileName=C:\\REPOS\\.NET\\CORESQL.MDF;";
+            SqlConnection conn = new SqlConnection(connStr);
 conn.Open();
 string qStr = "select * from paylog";
 SqlCommand cmd = new SqlCommand(qStr, conn);
@@ -129,26 +117,8 @@ SqlCommand cmd = new SqlCommand(qStr, conn);
 while(reader.Read())
 Console.WriteLine(reader[1].ToString());
 reader.Close();
-conn.Close();
+conn.Close();*/
         }
 
-        static void GetPlayers()
-        {
-            var url = "https://localhost:5001/Logs/GetPlayer";
-            using (HttpClient hc = new HttpClient())
-            {
-                try
-                {
-                    hc.Timeout = TimeSpan.FromSeconds(30);
-                    HttpResponseMessage hrm = hc.GetAsync(url).Result;
-                    string body = hrm.Content.ReadAsStringAsync().Result;
-Console.WriteLine(body);
-                }
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine("exception "+e.Message);
-                }
-            }
-        }
     }
 }
