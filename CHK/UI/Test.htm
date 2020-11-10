@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div style="background-color:#ffcf00"><img width="30%" height="30%" src="img/CHB-pic(35).png" /></div>
+  <div style="background-color:#d41423" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group">
+          <button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              匯入<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">txt</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">excel</a></li>            
+          </ul>
+        </div>
+  <button class="btn btn-lg btn-danger" id="check" type="button">存檔</button>
+  <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          報表<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">支付明細表</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">整批支票補印</a></li>
+        <li><a href="#">整批本票補印</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="check" type="button">新增</button>
+                        <button class="btn btn-default" id="check" type="button">刪除</button>
+                        <button class="btn btn-default" id="check" type="button">更新</button>
+                      </span>
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    
+                    <div class="btn-group">
+                        <button id="btn-query" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-search"></span>查詢<span class="caret"></span>
+                        </button>
+                        <ul id="btn-search" class="dropdown-menu">
+
+                        </ul>
+                      </div>
+                  </span>
+                </div><!-- /input-group -->
+          
+
+    
+    <div style="height:250px; overflow:auto;">
+        <table style="width:100%; height:400px;"><thead ID="dgvHead"></thead><tbody ID="dgvBody"></tbody></table>
+    </div>
+<div class="text-center">
+          <button class="btn btn-lg btn-primary btn-block" id="check" type="button">產生提出檔</button>
+          <button class="btn btn-lg btn-secondary btn-block" id="check" type="button">產生遞送單</button>
+        </div>
+
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
