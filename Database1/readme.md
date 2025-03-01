@@ -1,1 +1,0 @@
-Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\repos\.Net\mssql.mdf;Integrated Security=True;Connect Timeout=30
